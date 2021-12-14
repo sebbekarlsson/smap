@@ -1,6 +1,6 @@
 #ifndef SMAP_H
 #define SMAP_H
-#include <json/json.h>
+#include <fastjson/json.h>
 #include <VLQ/VLQ.h>
 #include <hashmap/map.h>
 
@@ -27,6 +27,7 @@ typedef struct SOURCE_MAP_MAPPINGS_STRUCT {
   char* original_line_number_str;
   char* original_column_str;
   char* original_name_str;
+  char* source_code;
 
   struct SOURCE_MAP_MAPPINGS_STRUCT** columns;
   uint32_t length;
@@ -42,6 +43,8 @@ typedef struct SOURCE_MAP_STRUCT {
   uint32_t names_length;
   char* mappings;
   VLQDecodeResult* mappings_decoded;
+  char** source_contents;
+  uint32_t source_contents_length;
   LineInfo** line_info;
   uint32_t lines;
   uint32_t  total_length;

@@ -62,11 +62,20 @@ FetchContent_MakeAvailable(VLQ_static)
 
 
 FetchContent_Declare(
-  json_static
-  GIT_REPOSITORY https://github.com/sebbekarlsson/libjson.git
+  fjson_static
+  URL /home/ianertson/workspace/fastjson
+  #GIT_REPOSITORY https://github.com/sebbekarlsson/fastjson.git
   )
-FetchContent_MakeAvailable(json_static)
+FetchContent_MakeAvailable(fjson_static)
 
+FetchContent_Declare(
+  b64_static
+  GIT_REPOSITORY https://github.com/sebbekarlsson/b64.git
+  )
+
+if (NOT TARGET b64_static)
+  FetchContent_MakeAvailable(b64_static)
+endif()
 
 FetchContent_Declare(
   hashmap_static
@@ -76,6 +85,6 @@ FetchContent_Declare(
 if (NOT TARGET hashmap_static)
 FetchContent_MakeAvailable(hashmap_static)
 endif()
-target_link_libraries(smap PRIVATE m VLQ_static json_static)
-target_link_libraries(smap_e PRIVATE m VLQ_static json_static)
-target_link_libraries(smap_static PRIVATE m VLQ_static json_static)
+target_link_libraries(smap PUBLIC m VLQ_static fjson_static b64_static)
+target_link_libraries(smap_e PUBLIC m VLQ_static fjson_static b64_static)
+target_link_libraries(smap_static PUBLIC m VLQ_static fjson_static b64_static)

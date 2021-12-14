@@ -3,7 +3,9 @@
 -I/usr/include
 -I./_deps/vlq_static-src/include
 -I./build/_deps/vlq_static-src/include
--I./_deps/json_static-src/include
--I./build/_deps/json_static-src/include
+-I./_deps/fjson_static-src/include
+-I./build/_deps/fjson_static-src/include
 -I./_deps/hashmap_static-src/include
 -I./build/_deps/hashmap_static-src/include
+-I./_deps/b64_static-src/include
+-I./build/_deps/b64_static-src/include
